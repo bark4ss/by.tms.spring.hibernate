@@ -2,6 +2,7 @@ package com.example.by_tms_spring_hibernate.service;
 
 import com.example.by_tms_spring_hibernate.repository.BaseDao;
 import com.example.by_tms_spring_hibernate.entity.Cinema;
+import com.example.by_tms_spring_hibernate.repository.CinemaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -13,37 +14,38 @@ import java.util.List;
 public class CinemaServiceImpl implements ServiceDao<Long, Cinema> {
 
     @Autowired
-    @Qualifier("cinemaDaoBean")
-    private BaseDao<Long,Cinema> baseDao;
+    /*@Qualifier("cinemaDaoBean")
+    private BaseDao<Long,Cinema> baseDao;*/
+    private CinemaRepository cinemaRepository;
 
     @Override
-    @Transactional
+    //@Transactional
     public void save(Cinema cinema) {
-        baseDao.save(cinema);
+        cinemaRepository.saveAndFlush(cinema);
     }
 
     @Override
-    @Transactional
+    //@Transactional
     public void update(Cinema cinema) {
-        baseDao.update(cinema);
+        cinemaRepository.saveAndFlush(cinema);
     }
 
     @Override
-    @Transactional
+    //@Transactional
     public void delete(Long id) {
-        baseDao.delete(id);
+        cinemaRepository.deleteById(id);
     }
 
     @Override
-    @Transactional
+    //@Transactional
     public Cinema getById(Long id) {
-        return baseDao.getById(id);
+        return cinemaRepository.findById(id).get();
     }
 
     @Override
-    @Transactional
+    //@Transactional
     public List<Cinema> getAll() {
-        return baseDao.getAll();
+        return cinemaRepository.findAll();
     }
 }
 

@@ -14,7 +14,7 @@ public class Cinema extends BaseEntity {
 
     private String address;
 
-    @OneToMany(mappedBy = "cinema",cascade = ALL)
+    @OneToMany(mappedBy = "cinema",cascade = ALL, fetch = FetchType.EAGER)
     private Set<Film> films = new HashSet<>();
 
     public Cinema() {

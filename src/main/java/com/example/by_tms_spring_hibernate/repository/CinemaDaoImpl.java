@@ -9,10 +9,10 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository("cinemaDaoBean")
-public class CinemaDaoImpl implements BaseDao<Long, Cinema> {
-
-    @Autowired
+//@Repository("cinemaDaoBean")
+public class CinemaDaoImpl {
+    // implements BaseDao<Long, Cinema>
+    /*@Autowired
     private SessionFactory sessionFactory;
 
     @Override
@@ -48,5 +48,5 @@ public class CinemaDaoImpl implements BaseDao<Long, Cinema> {
         Query<Cinema> query = session.createQuery("select c from Cinema c", Cinema.class);
         List<Cinema> allCinemas = query.getResultList();
         return allCinemas;
-    }
+    }*/
 }

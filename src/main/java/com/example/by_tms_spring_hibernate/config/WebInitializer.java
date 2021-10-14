@@ -11,7 +11,7 @@ public class WebInitializer extends
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class[]{HibernateConfig.class};
+        return new Class[]{RootConfig.class};
     }
 
     @Override

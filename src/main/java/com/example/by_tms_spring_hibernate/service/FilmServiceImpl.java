@@ -2,6 +2,7 @@ package com.example.by_tms_spring_hibernate.service;
 
 import com.example.by_tms_spring_hibernate.repository.BaseDao;
 import com.example.by_tms_spring_hibernate.entity.Film;
+import com.example.by_tms_spring_hibernate.repository.FilmRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -13,36 +14,37 @@ import java.util.List;
 public class FilmServiceImpl implements ServiceDao<Long, Film> {
 
     @Autowired
-    @Qualifier("filmDaoBean")
-    private BaseDao<Long, Film> baseDao;
+    /*@Qualifier("filmDaoBean")
+    private BaseDao<Long, Film> baseDao;*/
+    private FilmRepository filmRepository;
 
     @Override
-    @Transactional
+    //@Transactional
     public void save(Film film) {
-        baseDao.save(film);
+        filmRepository.saveAndFlush(film);
     }
 
     @Override
-    @Transactional
+    //@Transactional
     public void update(Film film) {
-        baseDao.update(film);
+        filmRepository.saveAndFlush(film);
     }
 
     @Override
-    @Transactional
+    //@Transactional
     public void delete(Long id) {
-        baseDao.delete(id);
+        filmRepository.deleteById(id);
     }
 
     @Override
-    @Transactional
+    //@Transactional
     public Film getById(Long id) {
-        return baseDao.getById(id);
+        return filmRepository.findById(id).get();
     }
 
     @Override
-    @Transactional
+    //@Transactional
     public List<Film> getAll() {
-        return baseDao.getAll();
+        return filmRepository.findAll();
     }
 }

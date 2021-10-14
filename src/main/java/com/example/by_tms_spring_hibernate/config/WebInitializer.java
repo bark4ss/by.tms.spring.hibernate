@@ -30,7 +30,7 @@ public class WebInitializer extends
     protected Filter[] getServletFilters() {
         CharacterEncodingFilter encodingFilter = new CharacterEncodingFilter();
         encodingFilter.setEncoding("UTF-8");
-
+        //https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/filter/CharacterEncodingFilter.html
         encodingFilter.setForceEncoding(true); //заставить применить кодировку
 
         return new Filter[] {encodingFilter};

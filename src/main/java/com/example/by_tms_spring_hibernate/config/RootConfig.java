@@ -27,7 +27,7 @@ import java.util.Properties;
 @EnableTransactionManagement
 @PropertySource(value = "classpath:hibernate.properties")
 @EnableJpaRepositories("com.example.by_tms_spring_hibernate.repository")
-public class RootConfig implements WebMvcConfigurer {
+public class RootConfig {
 
     private Environment environment;
 
@@ -93,11 +93,6 @@ public class RootConfig implements WebMvcConfigurer {
         transactionManager.setEntityManagerFactory(entityManagerFactory().getObject());
 
         return transactionManager;
-    }
-
-    @Bean
-    public PersistenceExceptionTranslationPostProcessor exceptionTranslation(){
-        return new PersistenceExceptionTranslationPostProcessor();
     }
 
     private Properties properties(){
